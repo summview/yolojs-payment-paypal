@@ -1,0 +1,2 @@
+Http GET  /transaction Payment.Paypal:http-get-transaction
+Http POST /receipt     Payment.Paypal:http-post-receipt

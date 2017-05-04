@@ -1,0 +1,23 @@
+{
+  "name": "yolojs-payment-paypal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yolojs/yolojs-payment-paypal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yolojs/yolojs-payment-paypal/issues"
+  },
+  "homepage": "https://github.com/yolojs/yolojs-payment-paypal#readme",
+  "dependencies": {
+    "yolojs-adapter-http": "file:///home/nico/repos/yolojs-adapter-http"
+  }
+}
