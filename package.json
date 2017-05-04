@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/yolojs/yolojs-payment-paypal#readme",
   "dependencies": {
+    "paypal-rest-sdk": "^1.7.1",
     "yolojs-adapter-http": "file:///home/nico/repos/yolojs-adapter-http"
   }
 }
