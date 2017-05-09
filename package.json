@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "postinstall": "MODULE=$(basename $(pwd)); cd ../..; node_modules/yolojs/bin/yolo-cli bind-module $(MODULE)"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "homepage": "https://github.com/yolojs/yolojs-payment-paypal#readme",
   "dependencies": {
     "paypal-rest-sdk": "^1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.3.0"
+  },
+  "peerDependencies": {
+    "yolojs": "^"
   }
 }
