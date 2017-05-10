@@ -1,11 +1,4 @@
-{ "Instances":
-  { "Payment.Paypal.Api": "Router"
-  , "Payment.Paypal.Api.Http": "Adapter.Http.Server"
-  , "Payment.Paypal.Api.Http.CORS": "Adapter.Http.CORS"
-  }
-, "Data":
-  { "Payment.Paypal.Api": { "routes": [ "config/paypal.5462.map" ] }
-  , "Payment.Paypal.Api.Http": { "ip": "0.0.0.0" }
-  , "Payment.Paypal": { "client_id": "<client_id>", "client_secret": "<client_secret>" }
+{ "Data":
+  { "Payment.Paypal": { "client_id": "<client_id>", "client_secret": "<client_secret>" }
   }
 }

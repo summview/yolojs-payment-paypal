@@ -1,1 +1,0 @@
-Http POST /subscription/create     Payment.Paypal:http-post-subscription-create

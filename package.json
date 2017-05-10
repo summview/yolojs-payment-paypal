@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "postinstall": "MODULE=$(basename $(pwd)); cd ../..; node_modules/yolojs/bin/yolo-cli bind-module $(MODULE)"
+    "preinstall": "yolo-cli link",
+    "postinstall": "yolo-cli bind-module"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,6 @@
     "mocha": "^3.3.0"
   },
   "peerDependencies": {
-    "yolojs": "^"
+    "yolojs": "^1.0.0"
   }
 }
