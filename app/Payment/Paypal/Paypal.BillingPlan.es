@@ -3,11 +3,13 @@ import paypal from 'paypal-rest-sdk';
 export default function (node, logger) {
 
   node.on('billing-plan-create', function (billingPlanAttributes, callback) {
-    return paypal.billingPlan.create(billingPlanAttributes, this.node.get('.'), callback);
+    const cfg = this.node.get(['client_id', 'client_secret']);
+    return paypal.billingPlan.create(billingPlanAttributes, cfg, callback);
   });
 
   node.on('billing-plan-update', function ({ planId, update }, callback) {
-    return paypal.billingPlan.update(planId, update, this.node.get('.'), callback);
+    const cfg = this.node.get(['client_id', 'client_secret']);
+    return paypal.billingPlan.update(planId, update, cfg, callback);
   });
 
   node.on('billing-plan-activate')

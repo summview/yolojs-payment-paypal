@@ -16,15 +16,18 @@ export default function (node, logger) {
   });
 
   node.on('billing-agreement-get', function (id , callback) {
-    return paypal.billingAgreement.get(id, this.node.get('.'), callback);
+    const cfg = this.node.get(['client_id', 'client_secret']);
+    return paypal.billingAgreement.get(id, cfg, callback);
   });
 
   node.on('billing-agreement-create', function (attributes, callback) {
-    return paypal.billingAgreement.create(attributes, this.node.get('.'), callback);
+    const cfg = this.node.get(['client_id', 'client_secret']);
+    return paypal.billingAgreement.create(attributes, cfg, callback);
   });
 
   node.on('billing-agreement-execute', function (token, callback) {
-    return paypal.billingAgreement.execute(token, {}, this.node.get('.'), callback);
+    const cfg = this.node.get(['client_id', 'client_secret']);
+    return paypal.billingAgreement.execute(token, {}, cfg, callback);
   });
 
 };

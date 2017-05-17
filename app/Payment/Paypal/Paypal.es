@@ -1,3 +1,4 @@
+/*!UroxGvT3uDMQCT1va20i43ZZSxo*/
 import invoice          from './Paypal.Invoice';
 import order            from './Paypal.Order';
 import subscription     from './Paypal.Subscription';
