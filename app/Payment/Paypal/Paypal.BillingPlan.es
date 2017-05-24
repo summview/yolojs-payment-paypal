@@ -2,15 +2,15 @@ import paypal from 'paypal-rest-sdk';
 
 export default function (node, logger) {
 
-  node.on('billing-plan-create', function (billingPlanAttributes, callback) {
-    const cfg = this.node.get(['client_id', 'client_secret']);
-    return paypal.billingPlan.create(billingPlanAttributes, cfg, callback);
-  });
+  node.on('billing-plan-create').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: attributes, config }, callback) {
+      return paypal.billingPlan.create(attributes, config, callback);
+    }).end();
 
-  node.on('billing-plan-update', function ({ planId, update }, callback) {
-    const cfg = this.node.get(['client_id', 'client_secret']);
-    return paypal.billingPlan.update(planId, update, cfg, callback);
-  });
+  node.on('billing-plan-update').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: { planId, update }, config }, callback) {
+      return paypal.billingPlan.update(planId, update, config, callback);
+    }).end();
 
   node.on('billing-plan-activate')
     .then( ':billing-plan-update'

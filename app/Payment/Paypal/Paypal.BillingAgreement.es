@@ -15,19 +15,19 @@ export default function (node, logger) {
     );
   });
 
-  node.on('billing-agreement-get', function (id , callback) {
-    const cfg = this.node.get(['client_id', 'client_secret']);
-    return paypal.billingAgreement.get(id, cfg, callback);
-  });
+  node.on('billing-agreement-get').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: id, config }, callback) {
+      return paypal.billingAgreement.get(id, config, callback);
+    }).end();
 
-  node.on('billing-agreement-create', function (attributes, callback) {
-    const cfg = this.node.get(['client_id', 'client_secret']);
-    return paypal.billingAgreement.create(attributes, cfg, callback);
-  });
+  node.on('billing-agreement-create').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: attributes, config }, callback) {
+      return paypal.billingAgreement.create(attributes, config, callback);
+    }).end();
 
-  node.on('billing-agreement-execute', function (token, callback) {
-    const cfg = this.node.get(['client_id', 'client_secret']);
-    return paypal.billingAgreement.execute(token, {}, cfg, callback);
-  });
+  node.on('billing-agreement-execute').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: { token }, config }, callback) {
+      return paypal.billingAgreement.execute(token, {}, config, callback);
+    }).end();
 
 };
