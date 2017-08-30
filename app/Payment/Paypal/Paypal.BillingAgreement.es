@@ -30,4 +30,9 @@ export default function (node, logger) {
       return paypal.billingAgreement.execute(token, {}, config, callback);
     }).end();
 
+  node.on('billing-agreement-cancel').then(':safe').trap(true, ':describe-error')
+    .then(function ({ payload: { id, reason }, config }, callback) {
+      return paypal.billingAgreement.cancel(id, { note: reason }, config, callback);
+    }).end();
+
 };
