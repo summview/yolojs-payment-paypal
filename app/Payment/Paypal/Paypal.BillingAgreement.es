@@ -33,7 +33,10 @@ export default function (node, logger) {
   node.on('billing-agreement-cancel').then(':safe').trap(true, ':describe-error')
     .then(function ({ payload: { id, reason }, config }, callback) {
         return paypal.billingAgreement.cancel(id, { note: reason }, config, function (err, result) {
-            logger.log(err.response);
+            try {
+              logger.log(err.response);              
+            } catch (e) {}
+            
             if (err) {
                 logger.err('Error', err);
             } else {
