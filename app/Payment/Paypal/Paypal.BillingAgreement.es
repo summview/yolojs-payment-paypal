@@ -38,7 +38,7 @@ export default function (node, logger) {
             } catch (e) {}
             
             if (err) {
-                logger.err('Error', err);
+                logger.log('Error', err);
             } else {
                 logger.log('Success', result);
             }
