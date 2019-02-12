@@ -32,8 +32,7 @@ export default function (node, logger) {
 
   node.on('billing-agreement-cancel').then(':safe').trap(true, ':describe-error')
     .then(function ({ payload: { id, reason }, config }, callback) {
-        try {
-          return paypal.billingAgreement.cancel(id, { note: reason }, config, function (err, result) {
+        return paypal.billingAgreement.cancel(id, { note: reason }, config, function (err, result) {
             try {
               logger.log(err.response);              
             } catch (e) {}
@@ -45,6 +44,6 @@ export default function (node, logger) {
             }
             callback(err, result);
         });
-      } catch (e) {}
     }).end();
+
 };
