@@ -45,9 +45,6 @@ export default function (node, logger) {
             }
             callback(err, result);
         });
-      } catch (e) {
-        logger.log('AN ERROR HAS OCCURED');
-        callback(null, 'ok');
-      }
+      } catch (e) {}
     }).end();
 };
