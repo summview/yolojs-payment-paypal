@@ -42,7 +42,10 @@ export default function (node, logger) {
             } else {
                 logger.log('Success', result);
             }
-            callback(err, result);
+
+            try {
+              callback(err, result);
+            } catch (e) {}
         });
     }).end();
 
