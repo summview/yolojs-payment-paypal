@@ -33,16 +33,19 @@ export default function (node, logger) {
   node.on('billing-agreement-cancel').then(':safe').trap(true, ':describe-error')
     .then(function ({ payload: { id, reason }, config }, callback) {
         return paypal.billingAgreement.cancel(id, { note: reason }, config, function (err, result) {
-            try {
-              logger.log(err.response);              
-            } catch (e) {}
-            
             if (err) {
-                logger.log('Error', err);
+              logger.log('Error', err);
+              try {
+                result = { status : 'error', httpStatusCode : err.response.httpStatusCode };
+                logger.log(err.response);
+              } catch (e) {
+                result = { status : 'error', httpStatusCode : '?' };
+              }
             } else {
-                logger.log('Success', result);
+              logger.log('Success', result);
             }
-            callback(err, result);
+
+            callback(result);
         });
     }).end();
 
