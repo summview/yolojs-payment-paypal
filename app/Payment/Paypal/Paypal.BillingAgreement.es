@@ -45,7 +45,7 @@ export default function (node, logger) {
               logger.log('Success', result);
             }
 
-            callback(result);
+            callback(err, result);
         });
     }).end();
 
