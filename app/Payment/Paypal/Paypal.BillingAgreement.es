@@ -36,10 +36,10 @@ export default function (node, logger) {
             if (err) {
               logger.log('Error', err);
               try {
-                result = { status : 'error', httpStatusCode : err.response.httpStatusCode };
+                result = { status : 'error', httpStatusCode : err.response.httpStatusCode, type: 'json' };
                 logger.log(err.response);
               } catch (e) {
-                result = { status : 'error', httpStatusCode : '?' };
+                result = { status : 'error', httpStatusCode : '?', type: 'json' };
               }
             } else {
               logger.log('Success', result);
